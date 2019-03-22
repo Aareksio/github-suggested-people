@@ -6,7 +6,7 @@ export class SuggestedPeopleService {
   }
 
   get(since = 1) {
-    return this.http.get('/users', { params: { since } });
+    return this.http.get('/users', { params: { since, per_page: 20 } });
   }
 }
 

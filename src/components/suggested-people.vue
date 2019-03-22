@@ -1,28 +1,17 @@
 <template>
-  <div class="suggested-people">
-    <div class="suggested-people__header">
-      <span>Who to follow</span>
-      <span class="suggested-people__refresh" @click="refresh">Refresh</span>
-    </div>
-
-    <div class="suggested-people__list">
-      <suggested-person
-          :person="person"
-          :key="index"
-          v-for="(person, index) in suggestedPeople"
-          @close="replace(index)">
-      </suggested-person>
-    </div>
-  </div>
+  <suggested-people-list
+      :people="suggestedPeople"
+      @replace="replace"
+      @refresh="refresh"></suggested-people-list>
 </template>
 
 <script>
   import suggestedPeopleService from '../services/SuggestedPeopleService';
-  import SuggestedPerson from './suggested-person';
+  import SuggestedPeopleList from './suggested-people/suggested-people-list';
 
   export default {
     name: 'suggested-people',
-    components: { SuggestedPerson },
+    components: { SuggestedPeopleList },
     data() {
       return {
         queue: [],
@@ -72,21 +61,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  .suggested-people {
-    border: 2px solid rgba(black, 0.1);
-  }
-
-  .suggested-people__header {
-    background: rgba(black, 0.1);
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .suggested-people__refresh {
-    cursor: pointer;
-    color: rgba(black, 0.8);
-  }
-</style>

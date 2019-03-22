@@ -1,6 +1,9 @@
 import Vue from 'vue';
+import VueRx from 'vue-rx';
+
 import App from './app.vue';
 
+Vue.use(VueRx);
 Vue.config.productionTip = false;
 
 new Vue({
